@@ -3,3 +3,8 @@ pydantic # require by fast api
 pydantic_settings
 python-dotenv # require by pydantic_settings
 uvicorn
+
+# for test
+pytest
+pytest-asyncio
+httpx[http2]

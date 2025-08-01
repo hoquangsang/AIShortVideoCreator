@@ -1,5 +1,7 @@
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
+
+
 class Settings(BaseSettings):
     # APP INFO & ENV
     APP_NAME: str = 'AI Short Video Creator'
@@ -12,12 +14,29 @@ class Settings(BaseSettings):
     PORT: int = 8000
     BASE_URL: str = 'http://localhost:8000'
 
+    # Raw strings from env
+    CORS_ALLOW_ORIGINS: str = '*'
+    CORS_ALLOW_METHODS: str = '*'
+    CORS_ALLOW_HEADERS: str = '*'
+    CORS_ALLOW_CREDENTIALS: bool = True
+
 
     model_config = SettingsConfigDict(
         env_file='.env',
         env_file_encoding='utf-8',
         extra='allow',
+        populate_by_name=True,
     )
+
+    @property
+    def CORS_ALLOW_ORIGINS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_ORIGINS.split(',')]
+    @property
+    def CORS_ALLOW_METHODS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_METHODS.split(',')]
+    @property
+    def CORS_ALLOW_HEADERS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_HEADERS.split(',')]
 
 
 settings = Settings()

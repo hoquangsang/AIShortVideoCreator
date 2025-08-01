@@ -10,6 +10,9 @@ backend/
 │   ├── infrastructure/                     # Tích hợp kỹ thuật: ORM, DB, external APIs
 │   ├── interfaces/                         # Giao tiếp bên ngoài: HTTP API, CLI, ...
 │   │
+│   ├── context/                            # Chứa app lifecycle
+│   ├── dependencies/                       # Chứa container dependency
+│   │
 │   └── main.py                             # Điểm vào chính của app (FastAPI entry)
 │
 ├── tests/                                  # Thư mục test

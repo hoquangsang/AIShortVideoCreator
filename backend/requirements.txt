@@ -4,6 +4,9 @@ pydantic_settings
 python-dotenv # require by pydantic_settings
 uvicorn
 dependency-injector
+pymongo
+dnspython # require by motor
+motor
 
 # for test
 pytest

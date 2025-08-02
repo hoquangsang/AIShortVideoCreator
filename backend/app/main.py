@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from app.context.lifecycle import lifespan
+from app.interfaces.api import api_router
 from config.setting import settings
 
 
@@ -18,5 +19,8 @@ def create_app() -> FastAPI:
         allow_headers=settings.CORS_ALLOW_HEADERS_LIST,
         allow_credentials=True,
     )
+
+    app.include_router(api_router)
+
 
     return app

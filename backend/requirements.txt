@@ -1,0 +1,5 @@
+fastapi
+pydantic # require by fast api
+pydantic_settings
+python-dotenv # require by pydantic_settings
+uvicorn

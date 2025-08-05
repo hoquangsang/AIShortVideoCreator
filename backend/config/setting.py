@@ -6,6 +6,7 @@ class Settings(BaseSettings):
     APP_VERSION: str = '1.0.0'
     APP_ENV: str = 'development'
     LOG_LEVEL: str = 'debug'
+    LOG_DIR: str = 'logs'
 
     # SERVER CONFIG
     HOST: str = '0.0.0.0'

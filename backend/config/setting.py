@@ -19,6 +19,11 @@ class Settings(BaseSettings):
     CORS_ALLOW_HEADERS: str = '*'
     CORS_ALLOW_CREDENTIALS: bool = True
 
+    # Database
+    MONGODB_URI: str
+    MONGODB_DATABASE: str
+
+    # TODO
 
     model_config = SettingsConfigDict(
         env_file='.env',

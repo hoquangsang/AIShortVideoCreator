@@ -3,6 +3,7 @@ from injector import Injector
 from fastapi_injector import attach_injector
 from app.context.lifecycle import lifespan
 from app.context.module import AppModule
+from app.core.interfaces.http.api import router as api_router
 from config.setting import settings
 
 
@@ -22,6 +23,8 @@ def create_app() -> FastAPI:
     )
 
     # TODO: add middleware
-    # TODO: add api endpoint
+
+    # add router
+    app.include_router(api_router)
 
     return app

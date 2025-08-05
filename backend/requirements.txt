@@ -5,6 +5,9 @@ python-dotenv # require by pydantic_settings
 uvicorn
 injector
 fastapi_injector
+pymongo
+dnspython # require by motor
+motor
 
 # for test
 pytest

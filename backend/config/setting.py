@@ -13,6 +13,12 @@ class Settings(BaseSettings):
     PORT: int = 8000
     BASE_URL: str = 'http://localhost:8000'
 
+    # CORS (raw)
+    CORS_ALLOW_ORIGINS: str = '*'
+    CORS_ALLOW_METHODS: str = '*'
+    CORS_ALLOW_HEADERS: str = '*'
+    CORS_ALLOW_CREDENTIALS: bool = True
+
 
     model_config = SettingsConfigDict(
         env_file='.env',
@@ -20,6 +26,15 @@ class Settings(BaseSettings):
         extra='allow',
     )
 
+    @property
+    def CORS_ALLOW_ORIGINS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_ORIGINS.split(',')]
+    @property
+    def CORS_ALLOW_METHODS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_METHODS.split(',')]
+    @property
+    def CORS_ALLOW_HEADERS_LIST(self) -> list[str]:
+        return [i.strip() for i in self.CORS_ALLOW_HEADERS.split(',')]
 
     @property
     def IS_DEV_MODE(self) -> bool:

@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from fastapi.middleware.cors import CORSMiddleware
 from injector import Injector
 from fastapi_injector import attach_injector
 from app.context.lifecycle import lifespan
@@ -22,7 +23,14 @@ def create_app() -> FastAPI:
         injector=injector
     )
 
-    # TODO: add middleware
+    # add middleware
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=settings.CORS_ALLOW_ORIGINS_LIST,
+        allow_methods=settings.CORS_ALLOW_METHODS_LIST,
+        allow_headers=settings.CORS_ALLOW_HEADERS_LIST,
+        allow_credentials=settings.CORS_ALLOW_CREDENTIALS,
+    )
 
     # add router
     app.include_router(api_router)
